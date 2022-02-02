@@ -1,20 +1,38 @@
 package main
 
 import (
+	"flag"
 	"fmt"
-	"github.com/gin-gonic/gin"
 	"gohub/bootstrap"
+	btsConig "gohub/config"
+	"gohub/pkg/config"
+
+	"github.com/gin-gonic/gin"
 )
+
+func init() {
+	// 加载 config 目录下的配置信息
+	btsConig.Initialize()
+}
 
 func main() {
 
-	// new 一个 Gin Engine 实例
-	r := gin.New()
+	// 配置初始化，依赖命令行 --env 参数
+	var env string
+	flag.StringVar(&env, "env", "", "加载 .env 文件，如 --env=testing 加载的是 .env.testing 文件")
+	flag.Parse()
+	config.InitConfig(env)
 
-	bootstrap.SetupRoute(r)
-	// 运行服务，默认为 8080，我们指定端口为 3000
-	err := r.Run(":3001")
+	// new 一个 Gin Engine 实例
+	router := gin.New()
+
+	// 初始化路由绑定
+	bootstrap.SetupRoute(router)
+
+	// 运行服务
+	err := router.Run(":" + config.Get("app.port"))
 	if err != nil {
-		fmt.Println("服务启动异常",err)
+		// 错误处理，端口被占用了或者其他错误
+		fmt.Println(err.Error())
 	}
 }
