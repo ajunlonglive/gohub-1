@@ -20,7 +20,7 @@ tmp_dir = "tmp"
   exclude_file = []
   # 使用正则表达式进行忽略文件设置
   exclude_regex = []
-  # 忽略未变更的慰问金
+  # 忽略未变更的文件
   exclude_unchanged = false
   # 监控系统链接的目录
   follow_symlink = false
@@ -36,7 +36,7 @@ tmp_dir = "tmp"
   log = "build-errors.log"
   # 在 kill 之前发送系统中断信号，windows 不支持此功能
   send_interrupt = false
-  # error 发生是结束运行
+  # error 发生时结束运行
   stop_on_error = true
 
 [color]
