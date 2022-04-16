@@ -1,10 +1,10 @@
 package config
-import (
-	"gohub/pkg/helpers"
-	"os"
 
+import (
 	"github.com/spf13/cast"
 	viperlib "github.com/spf13/viper" // 自定义包名，避免与内置 viper 实例冲突
+	"gohub/pkg/helpers"
+	"os"
 )
 var viper *viperlib.Viper
 
@@ -51,10 +51,10 @@ func loadEnv(envSuffix  string) {
 		filepath := ".env." + envSuffix
 		if _, err := os.Stat(filepath); err == nil {
 			// 如 .env.testing 或 .env.stage
-			envPath = filepath
+			envPath = filepath //其实这里的意思就是只有正常打开并且没有err的时候才会替换
 		}
 	}
-	viper.SetConfigName(envPath)
+	viper.SetConfigName(envPath)   //读取的路径
 	if err := viper.ReadInConfig(); err != nil {
 		panic(err)
 	}

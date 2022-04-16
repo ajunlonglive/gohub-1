@@ -8,7 +8,7 @@ import (
 )
 
 func SetupRouter(router *gin.Engine) {
-	registerGlobalMiddleWare(router)
+	registerGlobalMiddleWare(router) //初始化router
 
 	//  注册 API 路由
 	routes.RegisterAPIRoutes(router)
