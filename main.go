@@ -27,6 +27,7 @@ func main() {
 
 	router := gin.New()
 	// 初始化路由绑定
+
 	bootstrap.SetupRouter(router)
 
 	// new 一个 Gin Engine 实例
@@ -35,7 +36,7 @@ func main() {
 
 
 
-
+	gin.SetMode(gin.ReleaseMode)
 	// 运行服务
 	err := router.Run(":" + config.Get("app.port"))
 	if err != nil {
