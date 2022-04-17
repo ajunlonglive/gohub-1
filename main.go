@@ -3,11 +3,10 @@ package main
 import (
 	"flag"
 	"fmt"
+	"github.com/gin-gonic/gin"
 	"gohub/bootstrap"
 	btsConfig "gohub/config"
 	"gohub/pkg/config"
-
-	"github.com/gin-gonic/gin"
 )
 
 func init() {
@@ -31,6 +30,7 @@ func main() {
 	// 初始化路由绑定
 
 	bootstrap.SetupRouter(router)
+
 
 	// new 一个 Gin Engine 实例
 

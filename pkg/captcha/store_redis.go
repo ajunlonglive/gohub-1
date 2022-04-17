@@ -26,6 +26,7 @@ func (s *RedisStore) Set(key string, value string) error {
 	if ok := s.RedisClient.Set(s.KeyPrefix+key, value, ExpireTime); !ok {
 		return errors.New("无法存储图片验证码答案")
 	}
+
 	return nil
 }
 
