@@ -8,8 +8,8 @@ import (
 
 // Message 是短信的结构体
 type Message struct {
-	Template string
-	Data     map[string]string
+	Template string   //短信的模版
+	Data     map[string]string //短信的内容
 
 	Content string
 }

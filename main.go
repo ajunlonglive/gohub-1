@@ -32,6 +32,9 @@ func main() {
 	bootstrap.SetupRouter(router)
 
 
+
+
+
 	// new 一个 Gin Engine 实例
 
 	bootstrap.SetupDB()//初始化数据库
