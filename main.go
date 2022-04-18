@@ -30,17 +30,8 @@ func main() {
 	// 初始化路由绑定
 
 	bootstrap.SetupRouter(router)
-
-
-
-
-
 	// new 一个 Gin Engine 实例
-
 	bootstrap.SetupDB()//初始化数据库
-
-
-
 	gin.SetMode(gin.ReleaseMode)
 	// 运行服务
 	err := router.Run(":" + config.Get("app.port"))
